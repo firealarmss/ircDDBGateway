@@ -901,12 +901,12 @@ void CRepeaterHandler::processRepeater(CAMBEData& data)
 	}
 
 	if (data.isEnd() && m_msgNeeded) {
-		m_msgAudio->sendAnnouncement();
+		//m_msgAudio->sendAnnouncement();
 		m_msgNeeded = false;
 	}
 
 	if (data.isEnd() && m_wxNeeded) {
-		m_wxAudio->sendAnnouncement();
+	//	m_wxAudio->sendAnnouncement();
 		m_wxNeeded = false;
 	}
 }
@@ -1009,17 +1009,17 @@ void CRepeaterHandler::processBusy(CAMBEData& data)
 
 	if (data.isEnd()) {
 		if (m_infoNeeded) {
-			m_infoAudio->sendStatus();
+			//m_infoAudio->sendStatus();
 			m_infoNeeded = false;
 		}
 
 		if (m_msgNeeded) {
-			m_msgAudio->sendAnnouncement();
+			//m_msgAudio->sendAnnouncement();
 			m_msgNeeded = false;
 		}
 
 		if (m_wxNeeded) {
-			m_wxAudio->sendAnnouncement();
+			//m_wxAudio->sendAnnouncement();
 			m_wxNeeded = false;
 		}
 
@@ -1531,17 +1531,17 @@ void CRepeaterHandler::clockInt(unsigned int ms)
 			}
 
 			if (m_infoNeeded) {
-				m_infoAudio->sendStatus();
+				//m_infoAudio->sendStatus();
 				m_infoNeeded = false;
 			}
 
 			if (m_msgNeeded) {
-				m_msgAudio->sendAnnouncement();
+				//m_msgAudio->sendAnnouncement();
 				m_msgNeeded = false;
 			}
 
 			if (m_wxNeeded) {
-				m_wxAudio->sendAnnouncement();
+				//m_wxAudio->sendAnnouncement();
 				m_wxNeeded = false;
 			}
 
@@ -1551,17 +1551,17 @@ void CRepeaterHandler::clockInt(unsigned int ms)
 
 		if (m_busyId != 0x00U) {
 			if (m_infoNeeded) {
-				m_infoAudio->sendStatus();
+				//m_infoAudio->sendStatus();
 				m_infoNeeded = false;
 			}
 
 			if (m_msgNeeded) {
-				m_msgAudio->sendAnnouncement();
+				//m_msgAudio->sendAnnouncement();
 				m_msgNeeded = false;
 			}
 
 			if (m_wxNeeded) {
-				m_wxAudio->sendAnnouncement();
+				//m_wxAudio->sendAnnouncement();
 				m_wxNeeded = false;
 			}
 
@@ -2472,7 +2472,7 @@ void CRepeaterHandler::writeLinkingTo(const wxString &callsign)
 	CTextData textData(m_linkStatus, callsign, text, m_address, m_port);
 	m_repeaterHandler->writeText(textData);
 
-	m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
+	//m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
 	triggerInfo();
 
 	m_ccsHandler->setReflector();
@@ -2522,7 +2522,7 @@ void CRepeaterHandler::writeLinkedTo(const wxString &callsign)
 	CTextData textData(m_linkStatus, callsign, text, m_address, m_port);
 	m_repeaterHandler->writeText(textData);
 
-	m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
+	//m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
 	triggerInfo();
 
 	m_ccsHandler->setReflector(callsign);
@@ -2572,7 +2572,7 @@ void CRepeaterHandler::writeNotLinked()
 	CTextData textData(LS_NONE, wxEmptyString, text, m_address, m_port);
 	m_repeaterHandler->writeText(textData);
 
-	m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
+	//m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
 	triggerInfo();
 
 	m_ccsHandler->setReflector();
@@ -2637,8 +2637,8 @@ void CRepeaterHandler::writeIsBusy(const wxString& callsign)
 	CTextData textData2(m_linkStatus, m_linkRepeater, text, m_address, m_port);
 	m_repeaterHandler->writeText(textData2);
 
-	m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
-	m_infoAudio->setTempStatus(m_linkStatus, m_linkRepeater, tempText);
+	//m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
+	//m_infoAudio->setTempStatus(m_linkStatus, m_linkRepeater, tempText);
 	triggerInfo();
 
 	m_ccsHandler->setReflector();
@@ -2695,13 +2695,13 @@ void CRepeaterHandler::ccsLinkMade(const wxString& callsign, DIRECTION direction
 		CTextData textData(m_linkStatus, callsign, text, m_address, m_port);
 		m_repeaterHandler->writeText(textData);
 
-		m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
+		//m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
 		triggerInfo();
 	} else {
 		CTextData textData(m_linkStatus, m_linkRepeater, text, m_address, m_port, true);
 		m_repeaterHandler->writeText(textData);
 
-		m_infoAudio->setTempStatus(LS_LINKED_CCS, callsign, text);
+		//m_infoAudio->setTempStatus(LS_LINKED_CCS, callsign, text);
 		triggerInfo();
 	}
 }
@@ -2772,7 +2772,7 @@ void CRepeaterHandler::ccsLinkEnded(const wxString&, DIRECTION direction)
 			CTextData textData2(m_linkStatus, m_linkRepeater, text, m_address, m_port);
 			m_repeaterHandler->writeText(textData2);
 
-			m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
+			//m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
 			m_infoAudio->setTempStatus(m_linkStatus, m_linkRepeater, tempText);
 			triggerInfo();
 		}
@@ -2851,7 +2851,7 @@ void CRepeaterHandler::ccsLinkFailed(const wxString& dtmf, DIRECTION direction)
 			CTextData textData2(m_linkStatus, m_linkRepeater, text, m_address, m_port);
 			m_repeaterHandler->writeText(textData2);
 
-			m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
+			//m_infoAudio->setStatus(m_linkStatus, m_linkRepeater, text);
 			m_infoAudio->setTempStatus(m_linkStatus, m_linkRepeater, tempText);
 			triggerInfo();
 		}
@@ -2859,7 +2859,7 @@ void CRepeaterHandler::ccsLinkFailed(const wxString& dtmf, DIRECTION direction)
 		CTextData textData(m_linkStatus, m_linkRepeater, tempText, m_address, m_port, true);
 		m_repeaterHandler->writeText(textData);
 
-		m_infoAudio->setTempStatus(m_linkStatus, m_linkRepeater, tempText);
+		//m_infoAudio->setTempStatus(m_linkStatus, m_linkRepeater, tempText);
 		triggerInfo();
 	}
 }
@@ -2954,7 +2954,7 @@ void CRepeaterHandler::triggerInfo()
 	if (m_repeaterId != 0x00U || m_busyId != 0x00U) {
 		m_infoNeeded = true;
 	} else {
-		m_infoAudio->sendStatus();
+		//m_infoAudio->sendStatus();
 		m_infoNeeded = false;
 	}
 }
