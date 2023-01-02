@@ -1,3 +1,7 @@
+THIS IS A MODIFIED VERISION TO USE WITH ALLSTARLINK BRIDGES. IT WILL NO LONGER PLAY ANNOUNCEMENTS THROUGH TO ALLSTAR
+-KO4UYJ
+
+
 This is the ircDDB Gateway. It allows a D-Star Repeater to interface into callsign routing via ircDDB and all of the different reflector types. It includes many facilities, including:
 
 * Supports Icom stacks.
